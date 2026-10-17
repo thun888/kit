@@ -8,11 +8,38 @@
 kit <tool> [args]
 ```
 
-- `tool`：工具名，目前支持 `port`
+- `tool`：工具名，目前支持 `file`、`port`
 - 无参数或 `help` / `-h` / `--help`：打印总帮助
 - 每个工具和子命令都支持 `-h` / `--help` 查看自己的帮助
 
 ## 工具用法
+
+### file —— 文件占用查询
+
+```
+kit file <action> [args]
+```
+
+#### file scan —— 查看哪些进程正在使用某个文件
+
+```
+kit file scan [--json] <path>
+```
+
+| 参数 | 说明 |
+|------|------|
+| `<path>` | 文件路径，必填 |
+| `--json` | 以 JSON 输出结果 |
+
+默认以表格输出：`PID / USER / NAME / FD / ACCESS / TARGET / COMMAND`；
+没有进程占用时输出 `no process is using <path>`。
+
+示例：
+
+```bash
+kit file scan /var/log/syslog           # 表格列出使用该文件的进程
+kit file scan --json /var/log/syslog    # 以 JSON 输出
+```
 
 ### port —— 端口反查与清理
 
