@@ -25,26 +25,6 @@ jobs:
             goarch: arm64
             ext: ""
             artifact_name: kit-linux-arm64
-          - os: windows-latest
-            goos: windows
-            goarch: amd64
-            ext: .exe
-            artifact_name: kit-windows-amd64
-          - os: windows-latest
-            goos: windows
-            goarch: arm64
-            ext: .exe
-            artifact_name: kit-windows-arm64
-          - os: macos-latest
-            goos: darwin
-            goarch: amd64
-            ext: ""
-            artifact_name: kit-macos-amd64
-          - os: macos-latest
-            goos: darwin
-            goarch: arm64
-            ext: ""
-            artifact_name: kit-macos-arm64
 
     runs-on: ${{ matrix.os }}
     name: Build (${{ matrix.goos }}/${{ matrix.goarch }})
